@@ -1,0 +1,7 @@
+{
+    "key": "it's a secrect",
+    "crypt": "aes",
+    "mode": "fast",
+    "quiet": false
+}
+

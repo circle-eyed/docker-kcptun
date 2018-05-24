@@ -1,0 +1,12 @@
+version: "3"
+services:
+    kcptun:
+        build:
+            context: ./versions/kcptun
+        command: ["client_linux_amd64", "-c", "/etc/kcptun.json"]
+        image: cyclopszhao/kcptun:latest
+        ports:
+            - "12948:12948"
+        volumes:
+            - ./kcptun-client.json:/etc/kcptun.json
+

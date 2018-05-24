@@ -1,0 +1,41 @@
+schemaVersion: '2.0.0'
+
+commandTests:
+    - name: 'group kcptun'
+      command: 'cat'
+      args: ['/etc/group']
+      expectedOutput: ['kcptun']
+    - name: 'user kcptun'
+      command: 'cat'
+      args: ['/etc/passwd']
+      expectedOutput: ['kcptun']
+    - name: 'apk info'
+      command: 'apk'
+      args: ['info']
+      excludedOutput: ['curl']
+
+fileExistenceTests:
+    - name: 'server_linux_amd64'
+      path: '/usr/local/bin/server_linux_amd64'
+      shouldExist: true
+      permissions: '-rwxr-xr-x'
+    - name: 'client_linux_amd64'
+      path: '/usr/local/bin/client_linux_amd64'
+      shouldExist: true
+      permissions: '-rwxr-xr-x'
+    - name: 'docker-entrypoint.sh'
+      path: '/usr/local/bin/docker-entrypoint.sh'
+      shouldExist: true
+      permissions: '-rwxrwxr-x'
+    - name: 'link docker-entrypoint.sh'
+      path: '/docker-entrypoint.sh'
+      shouldExist: true
+      permissions: 'Lrwxrwxrwx'
+
+metadataTest:
+    entrypoint: ['docker-entrypoint.sh']
+    exposedPorts: ['12948', '29900']
+    labels:
+        - key: 'maintainer'
+          value: 'cyclops.zhao@protonmail.com'
+

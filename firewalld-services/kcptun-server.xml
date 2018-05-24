@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+    <short>kcptun</short>
+    <description>A Fast & Secure Tunnel Based On KCP with N:M Multiplexing</description>
+    <port protocol="udp" port="29900"/>
+</service>
