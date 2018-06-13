@@ -2,9 +2,16 @@ version: "3"
 services:
     kcptun:
         command: ["client_linux_amd64", "-c", "/etc/kcptun.json"]
+        container_name: dc-kcptun-clinet
         image: cyclopszhao/kcptun:latest
+        networks:
+            - kcptun-client
         ports:
             - 12948:12948
         volumes:
             - ./kcptun-client.json:/etc/kcptun.json
+
+networks:
+    kcptun-client:
+        driver: bridge
 

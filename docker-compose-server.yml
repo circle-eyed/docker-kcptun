@@ -2,9 +2,16 @@ version: "3"
 services:
     kcptun:
         command: ["server_linux_amd64", "-c", "/etc/kcptun.json"]
+        container_name: kcptun-server
         image: cyclopszhao/kcptun:latest
+        networks:
+            - kcptun-server
         ports:
             - 29900:29900/udp
         volumes:
             - ./kcptun-server.json:/etc/kcptun.json
+
+networks:
+    kcptun-server:
+        driver: bridge
 
