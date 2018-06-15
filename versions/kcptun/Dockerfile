@@ -25,6 +25,9 @@ COPY --from=builder /root/$KCPTUN/* /usr/local/bin/
 
 RUN apk add --no-cache --update su-exec
 
+RUN touch /var/log/kcptun.log \
+ && chown kcptun:kcptun /var/log/kcptun.log
+
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
  && ln -s /usr/local/bin/docker-entrypoint.sh / # backwards compat
@@ -32,3 +35,4 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
 EXPOSE 12948 29900
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+

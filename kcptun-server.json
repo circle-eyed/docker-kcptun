@@ -2,6 +2,7 @@
     "key": "it's a secrect",
     "crypt": "aes",
     "mode": "fast",
-    "quiet": false
+    "quiet": false,
+    "log": "/var/log/kcptun.log"
 }
 
